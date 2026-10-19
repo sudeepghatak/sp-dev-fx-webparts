@@ -7,7 +7,7 @@ A project delivery dashboard web part that reads tasks from a SharePoint list an
 
 | View | Description |
 | --- | --- |
-| **Timeline** | Gantt chart grouped by resource — tasks appear as colour-coded bars positioned by start date and duration, with week gridlines and a today marker |
+| **Timeline** | Gantt chart grouped by resource — tasks appear as colour-coded bars positioned by start date and duration, with week gridlines, a today marker and zoom controls |
 | **Weekly workload** | Heat-map grid showing how many tasks each resource has running concurrently per week — darker cells mean more concurrent work |
 | **Task list** | Sortable table of all tasks with resource, phase, start date, end date and duration |
 | **Phase summary** | Horizontal bars spanning each phase's earliest start to latest end, with contributing resources and task count |
@@ -77,6 +77,7 @@ Use the included PowerShell script to create the list and columns automatically 
 | Version | Date | Comments |
 |---|---|---|
 | 1.0 | 26 August 2026 | Initial release |
+| 1.1 | 20 October 2026 | Added zoom to the Timeline view |
 
 ## Minimal Path to Awesome
 
@@ -157,6 +158,19 @@ Install-Module PnP.PowerShell -Scope CurrentUser
 Tasks are grouped into per-resource lanes. Within each lane, each task appears as a coloured bar whose horizontal position and width correspond exactly to its start date and duration in calendar days. The colour is determined by the task's phase.
 
 The lane header shows the resource's avatar (initials, colour-coded by name), total task count, and cumulative person-days. A red vertical line marks today's date when it falls within the plan window.
+
+#### Zoom
+
+By default the timeline fits the whole plan to the width of the web part. Use the toolbar above the timeline to zoom in for more detail on shorter tasks:
+
+| Control | Action |
+| --- | --- |
+| **−** / **+** | Zoom out / in through 100%, 150%, 200%, 300%, 400%, 600% and 800% |
+| **Fit** | Return to 100% so the whole plan fits the width |
+| **Today** | Scroll so today's date is centred (shown when today falls within the plan window) |
+| **Ctrl / ⌘ + mouse wheel** | Zoom around the date under the cursor |
+
+When zoomed in, scroll horizontally to move through the plan. The task column and lane headers stay pinned on the left, so you can always see which task and resource each bar belongs to.
 
 ### Weekly workload — concurrent task heat-map
 
